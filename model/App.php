@@ -23,17 +23,9 @@ class App
    */
   public static function getPDO()
   {
-    // FIXME: enlever null quand intégration de la BDD
-    return null;
     if (!self::$pdo) {
-      // Informations à remplir pour l'accès à la base de données
-      $host = getenv("DB_HOST");
-      $db_name = getenv("DB_NAME");
-      $user = getenv("DB_USER");
-      $pwd = getenv("DB_PWD");
-      $dsnSqlite = "sqlite:db/phpsqlite.db";
-      $dsn = "mysql:host=$host;dbname=$db_name";
-      self::$pdo = new PDO($dsnSqlite, $user, $pwd);
+      $dsn = "sqlite:assets/db/ouate_db.db";
+      self::$pdo = new PDO($dsn, "", "");
     }
     return self::$pdo;
   }

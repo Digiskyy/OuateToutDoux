@@ -6,7 +6,7 @@ CREATE TABLE Users (
 	password TEXT NOT NULL,
 	sex TEXT,
 	phone TEXT,
-	age INTEGER ,
+	age INTEGER,
 	dateCreation DATETIME NOT NULL
 ) ;
 

@@ -11,7 +11,7 @@
 <body>
   <?= isset($err) ? "<span class=\"error\">$err</span>" : "" ?>
   <form action="/connexion" method="post">
-    <input type="text" name="email" id="mail-input" placeholder="Email">
+    <input type="text" name="mail" id="mail-input" placeholder="Email">
     <input type="password" name="password" id="password-input" placeholder="Mot de passe">
     <input type="submit" name="submit" value="Valider">
   </form>

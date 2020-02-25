@@ -25,8 +25,6 @@ class Auth
    */
   public function user($force_update = false): ?User
   {
-    // FIXME: enlever null quand intégration de la BDD
-    return new User();
     if (!$force_update) {
       if ($this->user) return $this->user;
     }
@@ -35,7 +33,7 @@ class Auth
     $id = $_SESSION["auth"] ?? null;
     if (!$id) return null;
     $id = intval($id);
-    $query = $this->pdo->prepare("SELECT * FROM USERS WHERE id_user=:id");
+    $query = $this->pdo->prepare("SELECT * FROM Users WHERE idUser=:id");
     $query->execute(["id" => $id]);
     $this->user = $query->fetchObject(User::class);
 
@@ -59,19 +57,17 @@ class Auth
   /**
    * Authentifie un utilisateur via son login/mot de passe
    */
-  public function login($username, $password): ?User
+  public function login($mail, $password): ?User
   {
-    // FIXME: enlever null quand intégration de la BDD
-    return new User();
     if (session_status() === PHP_SESSION_NONE)
       session_start();
-    $query = $this->pdo->prepare("SELECT * FROM USERS WHERE username=:username");
-    $query->execute(["username" => $username]);
+    $query = $this->pdo->prepare("SELECT * FROM Users WHERE mail=:mail");
+    $query->execute(["mail" => $mail]);
     $this->user = $query->fetchObject(User::class);
     if (!$this->user) return null;
 
     if (password_verify($password, $this->user->password)) {
-      $_SESSION["auth"] = intval($this->user->id_user);
+      $_SESSION["auth"] = intval($this->user->idUser);
       return $this->user;
     }
     return null;
