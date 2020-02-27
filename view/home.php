@@ -54,6 +54,48 @@
         </div>
         <!-- end header -->
 
+        <button id="showpopup">Ajouter liste de tâche</button>
+        <div id="popup" class="hide" style="position: absolute;display: none;">
+            <form method="POST">
+                Nom* <input type="text" name="nom" placeholder="Liste"/><br/>
+                Date de début <input name="datedebut" placeholder="<?php
+                    date_default_timezone_set('UTC');
+                    echo date("d/m/y"); ?>"><br>
+                Date de fin* <input type="text" name="datefin" id="" placeholder="<?php
+                    date_default_timezone_set('UTC');
+                    echo date("d/m/y"); ?>"><br/>
+                <b>*Cette information est obligatoire</b> </br>
+                <input type="submit" name="annuler" value="Annuler"/>
+                <input type="submit" name="confirmer" value="Confirmer"/></form><br/>
+            </form>
+        </div>
+        <script>
+            var popup = document.getElementById("popup")
+            var showpopup = document.getElementById("showpopup")
+            function hidePopupClass(){
+                showpopup.innerHTML = "Cacher formulaire"
+                popup.className = "show"
+                popup.style.display = "block"
+            }
+            function showPopupClass(){
+                showpopup.innerHTML = "Ajouter liste de tâche"
+                popup.className = "hide"
+                popup.style.display = "none"
+            }
+            showpopup.addEventListener("click" , function(){
+                switch(popup.className){
+                    case "hide": 
+                        hidePopupClass()
+                    break
+                    case "show":
+                        showPopupClass()
+                    break
+                    default: 
+                        alert("Si t'enlèves le d de Gady ça fait gay")
+                }
+            })
+        </script>
+        
         <!-- core -->
         <div class="container hero">
             <div class="row">
