@@ -3,30 +3,51 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Inscription</title>
+
+  <!-- css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700" />
+  <link rel="stylesheet" href="css/Header-Dark.compiled.css" />
+  <link rel="stylesheet" href="css/Registration-Form-with-Photo.compiled.css" />
+
 </head>
 
-<body>
-  <h1>Inscrivez-vous:</h1>
-  <?= isset($err) ? "<span class=\"error\">" . print_r($err, true) . "</span>" : "" ?>
-  <form action="/inscription" method="post">
-    <input type="text" name="mail" id="" placeholder="Email"><br>
-    <input type="text" name="firstname" id="" placeholder="Prénom"><br>
-    <input type="text" name="lastname" id="" placeholder="Nom de famille"><br>
-    <input type="number" name="age" id="" placeholder="Age"><br>
-    <input type="tel" name="phone" id="" placeholder="Téléphone"><br>
-    <input type="radio" name="sex" id="radio-homme" checked>
-    <label for="radio-homme"> Homme </label>
-    <input type="radio" name="sex" id="radio-femme">
-    <label for="radio-femme"> Femme </label><br>
-    <input type="password" name="password" id="" , placeholder="Mot de passe"><br>
-    <input type="password" name="password2" id="" , placeholder="Verifiez mot de passe"><br>
-    <input type="submit" name="submit" value="Valider"><br>
-  </form>
-  <span>Déjà inscrit ? <a href="/connexion">Connectez-vous</a></span>
-
+<body style="background-color: #f8ca9c;">
+  <?= isset($err) ? "<span class=\"error\">$err</span>" : "" ?>
+  <div class="register-photo" style="background-color: #f8ca9c;">
+    <div class="form-container">
+      <div class="image-holder" style="background-image: url('img/logo2.svg'); background-color: #ffb794;"></div>
+        <form class="shadow-lg" method="post" style="background-color: #f6b99c;" action="/inscription">
+          <h2 class="text-center">Inscrivez-vous :</h2>
+          <div class="form-group">
+            <input type="text" class="rouded-0 form-control" id="field" name="pseudo" placeholder="Pseudo" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+          </div>
+          <div class="form-group">
+            <input type="text" class="rouded-0 form-control" id="field" name="last-name" placeholder="Nom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
+          </div>
+          <div class="form-group">
+            <input type="text" class="rouded-0 form-control" id="field" name="first-name" placeholder="Prénom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
+          </div>
+          <div class="form-group">
+            <input type="email" class="rouded-0 form-control" id="field" name="email" placeholder="Email" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="rouded-0 form-control" id="field" name="password" placeholder="Mot de passe" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="rouded-0 form-control" id="field" name="password-repeat" placeholder="Confirmation du mot de passe" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" style="background-color: #908175;">Valider</button>
+          </div>
+          <span class="already" style="margin-top: 5%;">Déjà inscrit ? <a href="/connexion">Connectez-vous.</a></span>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
