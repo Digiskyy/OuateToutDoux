@@ -16,11 +16,10 @@ $id = $user->idUser;
 $pdo = App::getPDO();
 
 $title = htmlspecialchars($_POST["title"]);
-$beginDate = htmlspecialchars($_POST["begin-date"]);
+$beginDate = isset($_POST["begin-date"]) && strlen($_POST["begin-date"]) > 0 ? htmlspecialchars($_POST["begin-date"]) : date("Y-m-d H:i");
 $endDate = htmlspecialchars($_POST["end-date"]);
 
 $stmt = $pdo->prepare("INSERT INTO Lists(title, dateCreation, dateEnd, idUserOwner) VALUES (:title, :beg, :endDate, :idUser)");
-print_r($pdo->errorInfo());
 $stmt->execute(["idUser" => $id, "title" => $title, "beg" => $beginDate, "endDate" => $endDate]);
 $idList = $pdo->lastInsertId();
 $stmt->closeCursor();
