@@ -32,6 +32,11 @@ $router
     $user = $auth->user();
     if ($user) header("location: /dashboard");
     else header("location: /connexion");
+  })
+  ->post("/create_list", function() {
+    $auth = App::getAuth();
+    $auth->require_auth(); // Si l'utilisateur n'est pas connecté, il sera automatiquement redirigé vers /connexion
+    require_once("controller/create_list.php");
   });
 
 return $router;

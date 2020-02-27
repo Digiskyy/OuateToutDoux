@@ -57,7 +57,7 @@
         <!-- task list form -->
         <button id="showpopup">Ajouter liste de tâche</button>
         <div id="popup" class="hide" style="position: absolute;display: none;">
-            <form method="POST">
+            <form method="POST" action="/create_list">
                 Nom* <input type="text" name="title" placeholder="Liste"/><br/>
                 Date de début <input name="begin-date" placeholder="<?php
                     date_default_timezone_set('UTC');
