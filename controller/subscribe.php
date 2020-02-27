@@ -5,6 +5,11 @@ require_once("view/subscribe.php");
 
 use App\Model\App;
 
+function verifyPseudo($str)
+{
+  return (strlen($str) > 1);
+}
+
 function verifyPassword($str)
 {
   return (preg_match("/[\w]{6,35}/", $str));
@@ -28,7 +33,7 @@ if ($auth->user()) // Si l'utilisateur est déjà connecté
   header("location: /dashboard");
 
 $OK = false;
-$errors = ["mail" => null, "password" => null];
+$errors = ["pseudo" => null, "mail" => null, "password" => null];
 
 if (!isset($_POST["submit"])) {
   $mail = ""; // Aucun formulaire n'a été envoyé, on renvoie juste la page
@@ -36,16 +41,15 @@ if (!isset($_POST["submit"])) {
 } else {
   // require_once("model/verify.php");
 
+  $pseudo = htmlspecialchars($_POST["pseudo"]);
   $mail = htmlspecialchars($_POST["mail"]);
   $firstname = htmlspecialchars($_POST["firstname"]);
   $lastname = htmlspecialchars($_POST["lastname"]);
   $mail = htmlspecialchars($_POST["mail"]);
   $password = htmlspecialchars($_POST["password"]);
-  $sex = htmlspecialchars($_POST["sex"]);
-  $phone = htmlspecialchars($_POST["phone"]);
-  $age = intval(htmlspecialchars($_POST["age"]));
-  $password = htmlspecialchars($_POST["password"]);
 
+  if (!verifyPseudo($pseudo))
+    $errors["pseudo"] = "Pseudo trop court";
   if (!verifyMail($mail))
     $errors["mail"] = "Email invalide";
   if (!verifyPassword($password))
@@ -63,16 +67,14 @@ if (!isset($_POST["submit"])) {
   if (!isError($errors)) { // Tout est OK
     $hash = password_hash($password, PASSWORD_DEFAULT);
     try {
-      $stmt = $pdo->prepare("INSERT INTO Users (firstname, lastname, mail, password, sex, phone, age, dateCreation) VALUES (:f, :l, :mail, :password, :sex, :phone, :age, :dateCreation)");
+      $stmt = $pdo->prepare("INSERT INTO Users (pseudo, firstname, lastname, mail, password, dateCreation) VALUES (:pseudo, :f, :l, :mail, :password, :dateCreation)");
       echo "<br>stmt: ". print_r($pdo->errorInfo(), true) . "<br>";
       $stmt->execute([
+        "pseudo" => $pseudo,
         "mail" => $mail,
         "password" => $hash,
         "f" => $firstname,
         "l" => $lastname,
-        "sex" => $sex,
-        "phone" => $phone,
-        "age" => $age,
         "dateCreation" => date("Y-m-d H-i")
       ]);
       $stmt->closeCursor();

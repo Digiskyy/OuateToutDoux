@@ -8,10 +8,10 @@
   <title>Inscription</title>
 
   <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="view/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700" />
-  <link rel="stylesheet" href="css/Header-Dark.compiled.css" />
-  <link rel="stylesheet" href="css/Registration-Form-with-Photo.compiled.css" />
+  <link rel="stylesheet" href="view/css/Header-Dark.compiled.css" />
+  <link rel="stylesheet" href="view/css/Registration-Form-with-Photo.compiled.css" />
 
 </head>
 
@@ -19,7 +19,7 @@
   <?= isset($err) ? "<span class=\"error\">$err</span>" : "" ?>
   <div class="register-photo" style="background-color: #f8ca9c;">
     <div class="form-container">
-      <div class="image-holder" style="background-image: url('img/logo2.svg'); background-color: #ffb794;"></div>
+      <div class="image-holder" style="background-image: url('view/img/logo2.svg'); background-color: #ffb794;"></div>
         <form class="shadow-lg" method="post" style="background-color: #f6b99c;" action="/inscription">
           <h2 class="text-center">Inscrivez-vous :</h2>
           <div class="form-group">

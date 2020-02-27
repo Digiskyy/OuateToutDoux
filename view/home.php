@@ -8,17 +8,17 @@
     <title>Dashboard</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/Header-Dark.compiled.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="view/css/Header-Dark.compiled.css">
+    <link rel="stylesheet" href="view/css/home.css">
 
     <!-- js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="view/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="view/js/jquery.min.js"></script>
 
 </head>
 
@@ -27,7 +27,7 @@
         <!-- header -->
         <div class="shadow-lg header-dark" style="height: 150px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><img src="img/logo.svg" style="width: 10%;max-width: 10%;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><img src="view/img/logo.svg" style="width: 10%;max-width: 10%;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"></li>
