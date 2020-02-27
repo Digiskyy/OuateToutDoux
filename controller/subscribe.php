@@ -1,7 +1,6 @@
 <?php
 
 require_once("model/App.php");
-require_once("view/subscribe.php");
 
 use App\Model\App;
 
@@ -64,6 +63,7 @@ if (!isset($_POST["submit"])) {
   // }
 
   $pdo = App::getPDO();
+  echo "TEST";
   if (!isError($errors)) { // Tout est OK
     $hash = password_hash($password, PASSWORD_DEFAULT);
     try {

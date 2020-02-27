@@ -26,22 +26,22 @@
             <input type="text" class="rouded-0 form-control" id="field" name="pseudo" placeholder="Pseudo" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
           </div>
           <div class="form-group">
-            <input type="text" class="rouded-0 form-control" id="field" name="last-name" placeholder="Nom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
+            <input type="text" class="rouded-0 form-control" id="field" name="lastname" placeholder="Nom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
           </div>
           <div class="form-group">
-            <input type="text" class="rouded-0 form-control" id="field" name="first-name" placeholder="Prénom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
+            <input type="text" class="rouded-0 form-control" id="field" name="firstname" placeholder="Prénom" style="background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;margin-top: 5%;" />
           </div>
           <div class="form-group">
-            <input type="email" class="rouded-0 form-control" id="field" name="email" placeholder="Email" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+            <input type="email" class="rouded-0 form-control" id="field" name="mail" placeholder="Email" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
           </div>
           <div class="form-group">
             <input type="password" class="rouded-0 form-control" id="field" name="password" placeholder="Mot de passe" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
           </div>
           <div class="form-group">
-            <input type="password" class="rouded-0 form-control" id="field" name="password-repeat" placeholder="Confirmation du mot de passe" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+            <input type="password" class="rouded-0 form-control" id="field" name="password2" placeholder="Confirmation du mot de passe" style="background-color: #f8ca9c;margin-top: 5%;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
           </div>
           <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit" style="background-color: #908175;">Valider</button>
+            <button class="btn btn-primary btn-block" type="submit" style="background-color: #908175;" name="submit">Valider</button>
           </div>
           <span class="already" style="margin-top: 5%;">Déjà inscrit ? <a href="/connexion">Connectez-vous.</a></span>
         </form>

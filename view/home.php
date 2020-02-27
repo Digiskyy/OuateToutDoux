@@ -42,7 +42,7 @@
                         </form>
                         <div class="dropdown">
                             <a  aria-expanded="false" class="user rounded-0 float-right" href="#" style="margin-right: 0px;margin-top:30%;width: 123px;height: 83px;">
-                                <img class="float-right" src="img/user.svg" style="width: 85%;height: 75%;margin-right: 5%;" />
+                                <img class="float-right" src="view/img/user.svg" style="width: 85%;height: 75%;margin-right: 5%;" />
                             </a>
                             <div role="menu" class="dropdown-content">
                                 <a role="presentation" class="dropdown-item" href="#">Mes informations</a>
