@@ -1,12 +1,10 @@
 CREATE TABLE Users (
 	idUser INTEGER PRIMARY KEY AUTOINCREMENT,
-  firstname TEXT NOT NULL,
+	nickname TEXT NOT NULL UNIQUE,
+        firstname TEXT NOT NULL,
 	lastname TEXT NOT NULL,
 	mail TEXT NOT NULL UNIQUE,
 	password TEXT NOT NULL,
-	sex TEXT,
-	phone TEXT,
-	age INTEGER,
 	dateCreation DATETIME NOT NULL
 ) ;
 
