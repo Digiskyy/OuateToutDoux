@@ -54,6 +54,7 @@
         </div>
         <!-- end header -->
 
+        <!-- task list form -->
         <button id="showpopup">Ajouter liste de tâche</button>
         <div id="popup" class="hide" style="position: absolute;display: none;">
             <form method="POST">
@@ -72,16 +73,21 @@
         <script>
             var popup = document.getElementById("popup")
             var showpopup = document.getElementById("showpopup")
+            
+            //Hide the form
             function hidePopupClass(){
                 showpopup.innerHTML = "Cacher formulaire"
                 popup.className = "show"
                 popup.style.display = "block"
             }
+            
+            //Show the form
             function showPopupClass(){
                 showpopup.innerHTML = "Ajouter liste de tâche"
                 popup.className = "hide"
                 popup.style.display = "none"
             }
+            
             showpopup.addEventListener("click" , function(){
                 switch(popup.className){
                     case "hide": 
@@ -95,6 +101,7 @@
                 }
             })
         </script>
+        <!-- end form -->
         
         <!-- core -->
         <div class="container hero">
