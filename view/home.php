@@ -58,16 +58,16 @@
         <button id="showpopup">Ajouter liste de tâche</button>
         <div id="popup" class="hide" style="position: absolute;display: none;">
             <form method="POST">
-                Nom* <input type="text" name="nom" placeholder="Liste"/><br/>
-                Date de début <input name="datedebut" placeholder="<?php
+                Nom* <input type="text" name="title" placeholder="Liste"/><br/>
+                Date de début <input name="begin-date" placeholder="<?php
                     date_default_timezone_set('UTC');
                     echo date("d/m/y"); ?>"><br>
-                Date de fin* <input type="text" name="datefin" id="" placeholder="<?php
+                Date de fin* <input type="text" name="end-date" id="" placeholder="<?php
                     date_default_timezone_set('UTC');
                     echo date("d/m/y"); ?>"><br/>
                 <b>*Cette information est obligatoire</b> </br>
-                <input type="submit" name="annuler" value="Annuler"/>
-                <input type="submit" name="confirmer" value="Confirmer"/></form><br/>
+                <input type="button" name="undo" value="Annuler" onCLick="showPopupClass()"/>
+                <input type="submit" name="submit" value="Confirmer"/></form><br/>
             </form>
         </div>
         <script>
