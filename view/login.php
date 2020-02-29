@@ -14,6 +14,17 @@
   <link rel="stylesheet" href="view/css/Login-Form-Clean.css" />
   <link rel="stylesheet" href="view/css/Registration-Form-with-Photo.compiled.css" />
 
+  <!-- JS -->
+  <script type = "text/javascript">
+    function change_color(field, error)
+    {
+      if(error)
+        field.style.backgroundColor = "#fba"; // Couleur de fond rouge pâle
+      else
+        field.style.backgroundColor = "";
+    }
+  </script>
+
 </head>
 
 <body style="background-color: #f8ca9c;">
