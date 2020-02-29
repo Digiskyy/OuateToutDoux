@@ -21,7 +21,7 @@ function verifyMail($str)
 
 function isError($errors)
 {
-  return (isset($errors["username"]) || isset($errors["password"]));
+  return (isset($errors["pseudo"]) || isset($errors["mail"]) || isset($errors["password"]) );
 }
 
 $pdo = App::getPDO();
@@ -37,14 +37,14 @@ $errors = ["pseudo" => null, "mail" => null, "password" => null];
 if (!isset($_POST["submit"])) {
   $mail = ""; // Aucun formulaire n'a été envoyé, on renvoie juste la page
   require_once("view/subscribe.php");
-} else {
+}
+else {
   // require_once("model/verify.php");
 
   $pseudo = htmlspecialchars($_POST["pseudo"]);
   $mail = htmlspecialchars($_POST["mail"]);
   $firstname = htmlspecialchars($_POST["firstname"]);
   $lastname = htmlspecialchars($_POST["lastname"]);
-  $mail = htmlspecialchars($_POST["mail"]);
   $password = htmlspecialchars($_POST["password"]);
 
   if (!verifyPseudo($pseudo))
@@ -52,19 +52,13 @@ if (!isset($_POST["submit"])) {
   if (!verifyMail($mail))
     $errors["mail"] = "Email invalide";
   if (!verifyPassword($password))
-    $errors["password"] = "Format invalide (le mot de passe doit contenir au moins 6 caractères)";
+    $errors["password"] = "Format invalide (au moins 6 caractères)";
   if ($password !== htmlspecialchars($_POST["password2"]))
     $errors["password"] = "Mots de passes différents";
 
-  //TODO: Gérer les erreurs si un utilisateur utilise des données déjà utilisées
-  // if (!isError($errors)) { // S'il n'y a pas d'erreurs de format et les 2 mdp correspondent
-  //   if (App::get_user_by_username($username))
-  //     $errors["username"] = "Identifiant déjà utilisé"; // On ajoute l'erreur
-  // }
-
   $pdo = App::getPDO();
-  echo "TEST";
-  if (!isError($errors)) { // Tout est OK
+  if (!isError($errors)) // Tout est OK
+  {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     try {
       $stmt = $pdo->prepare("INSERT INTO Users (pseudo, firstname, lastname, mail, password, dateCreation) VALUES (:pseudo, :f, :l, :mail, :password, :dateCreation)");
