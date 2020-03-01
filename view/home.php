@@ -45,7 +45,7 @@
                                 <img class="float-right" src="view/img/user.svg" style="width: 85%;height: 75%;margin-right: 5%;" />
                             </a>
                             <div role="menu" class="dropdown-content">
-                                <a role="presentation" class="dropdown-item" href="#">Mes informations</a>
+                                <a role="presentation" class="dropdown-item" href="/accountInfo">Mes informations</a>
                                 <a role="presentation" class="dropdown-item" href="/deconnexion">Déconnexion <ion-icon name="power-outline"></ion-icon></a></div>
                         </div>
                     </div>
