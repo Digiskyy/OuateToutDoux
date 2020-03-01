@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="view/css/Header-Dark.compiled.css">
+    <link rel="stylesheet" href="view/css/Login-Form-Clean.css" />
     <link rel="stylesheet" href="view/css/home.css">
 
     <!-- js -->
@@ -55,37 +56,39 @@
         <!-- end header -->
 
         <!-- task list form -->
-        <button id="showpopup">Ajouter liste de tâche</button>
-        <div id="popup" class="hide" style="position: absolute;display: none;">
-            <form method="POST" action="/create_list">
-                Nom* <input type="text" name="title" placeholder="Liste"/><br/>
-                Date de début <input name="begin-date" placeholder="<?php
+        <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;"><img class="shadow-lg" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg"></a>
+        <div id="popup" class="hide" style="position: absolute;display: none;margin-left:45%;">
+            <div class="login-clean" style="background-color: #f8ca9c;">
+                <form class="shadow" style="background-color: #f6b99c;" action="/create_list" method="post">
+                    <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                    <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php
+                        date_default_timezone_set('UTC');
+                        echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                    <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
                     date_default_timezone_set('UTC');
-                    echo date("d/m/y"); ?>"><br>
-                Date de fin* <input type="text" name="end-date" id="" placeholder="<?php
-                    date_default_timezone_set('UTC');
-                    echo date("d/m/y"); ?>"><br/>
-                <b>*Cette information est obligatoire</b> </br>
-                <input type="button" name="undo" value="Annuler" onCLick="showPopupClass()"/>
-                <input type="submit" name="submit" value="Confirmer"/></form><br/>
-            </form>
+                    echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                    <div class="form-group" style="display:inline flex"><button class="btn btn-primary btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
+                    <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;margin-left:10%;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
+                </form>
+            </div>
         </div>
         <script>
             var popup = document.getElementById("popup")
             var showpopup = document.getElementById("showpopup")
+            var popup_icon = document.getElementById("popup_icon")
             
             //Hide the form
             function hidePopupClass(){
-                showpopup.innerHTML = "Cacher formulaire"
                 popup.className = "show"
                 popup.style.display = "block"
+                popup_icon.src = "view/img/less.svg"
             }
             
             //Show the form
             function showPopupClass(){
-                showpopup.innerHTML = "Ajouter liste de tâche"
                 popup.className = "hide"
                 popup.style.display = "none"
+                popup_icon.src = "view/img/plus.svg"
             }
             
             showpopup.addEventListener("click" , function(){

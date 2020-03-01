@@ -19,3 +19,7 @@
     background-color: #f8ca9c;
     border-color: rgb(0, 180, 48);
 }
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
