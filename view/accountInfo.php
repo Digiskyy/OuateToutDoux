@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
-    <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Dashboard</title>
@@ -25,8 +23,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
         <script src="js/jquery.min.js"></script>
-
-    </head>
+        
     <title>Personnal-Info</title>
 </head>
 
@@ -55,7 +52,7 @@
                             </a>
                             <div role="menu" class="dropdown-content">
                                 <a role="presentation" class="dropdown-item" href="/accountInfo">Mes informations</a>
-                                <a role="presentation" class="dropdown-item" href="/deconnexion">Déconnexion <ion-icon name="power-outline"></ion-icon></a></div>
+                                <a role="presentation" class="dropdown-item" href="/deconnexion">DÃ©connexion <ion-icon name="power-outline"></ion-icon></a></div>
                         </div>
                     </div>
                 </div>
@@ -69,38 +66,35 @@
 
         <form action="/modify-account.php" id="usr-info-form" class="info-form">
 
-            <h1>My account information</h1>
+            <h1>Mon compte</h1>
             <div class="form-info-line">
-                <label>Last name : </label>
-                <?php echo $lastName;   ?>
-                <input type="text" name="usr-last-name">
+                <label>Nom : </label>
+                <input type="text" id="usr-last-name" value="<?php echo $lastName;   ?>" readOnly="true">
                 <a href="#">
-                    <img alt="Modify last name on click" src="/view/img/pencil.png" width="30" height="30">
+                    <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" width="30" height="30" onClick="modifyName()">
                 </a>
             </div>
 
             <div class="form-info-line">
-                <label>First name: </label>
-                <?php echo  $firstName; ?>
-                <input type="text" name="usr-first-name">
+                <label>Prénom : </label>
+                
+                <input type="text" id="usr-first-name" value="<?php echo  $firstName; ?>" readOnly="true">
                 <a href="#">
-                    <img alt="Modify first name on click" src="/view/img/pencil.png" width="30" height="30">
+                    <img alt="Modify first name on click" id="img_first_name" src="/view/img/pencil.png" width="30" height="30" onClick="modifyFirstName()">
                 </a>
             </div>
 
 
             <div class="form-info-line">
                 <label>E-mail : </label>
-                <?php echo $eMail;   ?>
-                <input type="text" name="usr-e-mail">
+                <input type="text" id="usr-e-mail" value="<?php echo $eMail;   ?>" readOnly="true">
                 <a href="#">
-                    <img alt="Modify e-mail on click" src="/view/img/pencil.png" width="30" height="30">
+                    <img alt="Modify e-mail on click" id="img_email" src="/view/img/pencil.png" width="30" height="30" onClick="modifyEmail()">
                 </a>
             </div>
 
             <div class="form-info-line">
-                <label>Password : </label>
-                <?php echo $passWord;   ?>
+                <label>Mot de Passe : </label>
                 <input type="text" name="usr-password">
                 <a href="#">
                     <img alt="Modify password on click" src="/view/img/pencil.png" width="30" height="30">
@@ -109,6 +103,53 @@
 
 
         </form>
+        
+        
+         <script language="JavaScript">
+            var modifyNam = false;
+            var modifyFirstNam = false;
+            var modifyEmai = false;
+            
+            //Modify Name
+            function modifyName(){
+                if(!modifyNam){
+                    document.getElementById("usr-last-name").removeAttribute("readOnly");
+                    document.getElementById("img_name").src = "/view/img/validate.png";
+                    modifyNam = true;
+                }else{
+                    document.getElementById("usr-last-name").setAttribute("readOnly", "true");
+                    document.getElementById("img_name").src = "/view/img/pencil.png";
+                    modifyNam = false;
+                }
+            }
+            
+            //Modify first name
+            function modifyFirstName(){
+                if(!modifyFirstNam){
+                    document.getElementById("usr-first-name").removeAttribute("readOnly");
+                    document.getElementById("img_first_name").src = "/view/img/validate.png";
+                    modifyFirstNam = true;
+                }else{
+                    document.getElementById("usr-first-name").setAttribute("readOnly", "true");
+                    document.getElementById("img_first_name").src = "/view/img/pencil.png";
+                    modifyFirstNam = false;
+                }
+            }
+            
+            //Modify email
+            function modifyEmail(){
+                if(!modifyEmai){
+                    document.getElementById("usr-e-mail").removeAttribute("readOnly");
+                    document.getElementById("img_email").src = "/view/img/validate.png";
+                    modifyEmai = true;
+                }else{
+                    document.getElementById("usr-e-mail").setAttribute("readOnly", "true");
+                    document.getElementById("img_email").src = "/view/img/pencil.png";
+                    modifyEmai = false;
+                }
+            }
+            
+        </script>
 
 </body>
 
