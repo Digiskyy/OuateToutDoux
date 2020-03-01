@@ -1,0 +1,17 @@
+.info-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    padding: 2em;
+    font-family: 'Philosopher';
+}
+
+.form-info-line {
+    padding: 0.7em;
+    display: inline;
+    font-family: 'Philosopher';
+    font-size: 1.3em;
+}

@@ -22,6 +22,13 @@ $router
     $auth->logout();
     header("location: /connexion");
   })
+
+  ->any("/accountInfo", function (){
+    $auth = App::getAuth();
+    $auth->require_auth(); // Si l'utilisateur n'est pas connecté, il sera automatiquement redirigé vers /connexion
+    require_once("view/accountInfo.php");
+  })
+
   ->any("/dashboard", function () {
     $auth = App::getAuth();
     $auth->require_auth(); // Si l'utilisateur n'est pas connecté, il sera automatiquement redirigé vers /connexion
