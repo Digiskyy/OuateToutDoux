@@ -64,12 +64,12 @@
             require_once("controller/accountInfoController.php");         
         ?>
 
-        <form action="/modify-account.php" id="usr-info-form" class="info-form">
+        <form method="post" action="/accountInfo" id="usr-info-form" class="info-form">
 
             <h1>Mon compte</h1>
             <div class="form-info-line">
                 <label>Nom : </label>
-                <input type="text" id="usr-last-name" value="<?php echo $lastName;   ?>" readOnly="true">
+                <input type="text" id="usr-last-name" name="name" value="<?php echo $lastName;   ?>" readOnly="true">
                 <a href="#">
                     <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" width="30" height="30" onClick="modifyName()">
                 </a>
@@ -78,7 +78,7 @@
             <div class="form-info-line">
                 <label>Prénom : </label>
                 
-                <input type="text" id="usr-first-name" value="<?php echo  $firstName; ?>" readOnly="true">
+                <input type="text" id="usr-first-name" name="surname" value="<?php echo  $firstName; ?>" readOnly="true">
                 <a href="#">
                     <img alt="Modify first name on click" id="img_first_name" src="/view/img/pencil.png" width="30" height="30" onClick="modifyFirstName()">
                 </a>
@@ -87,7 +87,7 @@
 
             <div class="form-info-line">
                 <label>E-mail : </label>
-                <input type="text" id="usr-e-mail" value="<?php echo $eMail;   ?>" readOnly="true">
+                <input type="text" id="usr-e-mail"  name="email" value="<?php echo $eMail;   ?>" readOnly="true">
                 <a href="#">
                     <img alt="Modify e-mail on click" id="img_email" src="/view/img/pencil.png" width="30" height="30" onClick="modifyEmail()">
                 </a>
@@ -100,6 +100,8 @@
                     <img alt="Modify password on click" src="/view/img/pencil.png" width="30" height="30">
                 </a>
             </div>
+            
+            <input type="submit">
 
 
         </form>
@@ -150,6 +152,25 @@
             }
             
         </script>
+        
+        <?php
+            if(isset($_POST['name'])){
+                $lastName = $_POST['name'];
+            }
+            if(isset($_POST['surname'])){
+                $firstName = $_POST['surname'];
+            }
+            if(isset($_POST['email'])){
+                $email = $_POST['email'];
+            }
+            $stmt = $pdo->prepare("UPDATE Users set lastname = :name, firstname = :firstname, Mail=:email where idUser = :actualID");
+            $stmt->bindParam("name", $lastName);
+            $stmt->bindParam("firstname", $firstName);
+            $stmt->bindParam("email", $email);
+            $stmt->bindParam("actualID", $id);
+            $stmt->execute();
+            $stmt->closeCursor();
+        ?>
 
 </body>
 
