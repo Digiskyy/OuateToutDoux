@@ -73,14 +73,16 @@ else
       $checkPseudoRequest->execute(array($pseudo));
       $checkPseudoDB = $checkPseudoRequest->fetch(); // 1 line for the result in order to check whether it is empty or not
       $checkPseudoRequest->closeCursor();
+      $isPseudoNew = empty($checkPseudoDB) ? True : False;
 
       /* Check if the mail belongs to an existing account */
       $checkMailRequest = $pdo->prepare("SELECT * FROM Users WHERE mail = ?");
       $checkMailRequest->execute(array($mail));
       $checkMailDB = $checkMailRequest->fetch(); // 1 line for the result in order to check whether it is empty or not
       $checkMailRequest->closeCursor();
+      $isMailNew = empty($checkMailDB) ? True : False;
 
-      if(empty($checkPseudoDB) AND empty($checkMailDB)) // If the email and the pseudo has not already been added in the database
+      if($isPseudoNew AND $isMailNew) // If the email and the pseudo has not already been added in the database
       {
         /* Store the new account in the database */
         $accountRequest = $pdo->prepare("INSERT INTO Users (pseudo, firstname, lastname, mail, password, dateCreation) VALUES (:pseudo, :f, :l, :mail, :password, :dateCreation)");
@@ -97,7 +99,9 @@ else
       }
       else // The email or the pseudo has already been added in the database
       {
-        require_once("./view/subscribe.php");
+        $errors["pseudo"] = $isPseudoNew ? "" : "Pseudo déjà utilisé";
+        $errors["mail"] = $isMailNew ? "" : "Mail déjà utilisé";
+        header("/view/subscribe.php");
       }
     }
     catch (Exception $e)
