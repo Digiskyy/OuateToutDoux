@@ -1,8 +1,8 @@
 CREATE TABLE Users (
 	idUser INTEGER PRIMARY KEY AUTOINCREMENT,
 	pseudo TEXT NOT NULL UNIQUE,
-        firstname TEXT NOT NULL,
-	lastname TEXT NOT NULL,
+    firstname TEXT,
+	lastname TEXT,
 	mail TEXT NOT NULL UNIQUE,
 	password TEXT NOT NULL,
 	dateCreation DATETIME NOT NULL
