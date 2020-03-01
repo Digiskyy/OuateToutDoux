@@ -50,3 +50,18 @@ body {
 	text-decoration: none;
 	display: block;
 }
+
+/* creer liste */
+
+#popup_icon {
+	background-color: #f6b99c;
+}
+
+#popup_icon:hover {
+	opacity: 0.75;
+	background-color:#908175;
+}
+
+.btn-primary:hover {
+	opacity: 0.75;
+}

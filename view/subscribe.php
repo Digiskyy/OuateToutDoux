@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700" />
   <link rel="stylesheet" href="view/css/Header-Dark.compiled.css" />
   <link rel="stylesheet" href="view/css/Registration-Form-with-Photo.compiled.css" />
+  <link rel="stylesheet" href="view/css/subscribe.css">
 
 </head>
 
@@ -19,14 +20,14 @@
   <?= isset($err) ? "<span class=\"error\">$err</span>" : "" ?>
   <div class="register-photo" style="background-color: #f8ca9c;">
     <div class="form-container">
-      <div class="image-holder" style="background-image: url('view/img/logo2.svg'); background-color: #ffb794;"></div>
+      <div class="image-holder shadow-lg" style="background-image: url('view/img/logo2.svg'); background-color: #ffb794;"></div>
         <form class="shadow-lg" method="post" style="background-color: #f6b99c;" action="/inscription">
           <h2 class="text-center">Inscrivez-vous :</h2>
 
           <div class="form-group">
             <?php
               $pseudo = (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) ? "value=\"" . $_POST["pseudo"] . "\" " : ""; // Enables to rewrite pseudo already typed after reloading
-              print('<input type="text" class="rouded-0 form-control" class="field" name="pseudo" placeholder="Pseudo" ' . $pseudo);
+              print('<input type="text" class="rouded-0 form-control" class="field" name="pseudo" placeholder="Pseudo*" ' . $pseudo);
               if($errors["pseudo"] != "") // If pseudo has been typed and error(s) -> Red
               {
                 print('style="background-color: #f88; border-color: #f22; border-style: solid; border-width: 0.3vh;"/>');
@@ -59,7 +60,7 @@
           <div class="form-group">
             <?php
               $val = (isset($_POST["mail"]) && ($_POST["mail"] != "")) ? "value=\"" . $_POST["mail"] . "\" " : ""; // Enables to rewrite mail already typed after reloading
-              print('<input type="email" class="rouded-0 form-control" class="field" name="mail" placeholder="Email" ' . $val);
+              print('<input type="email" class="rouded-0 form-control" class="field" name="mail" placeholder="Email*" ' . $val);
               if($errors["mail"] != "")
               {
                 print('style="background-color: #f88; border-color: #f22; border-style: solid; border-width: 0.3vh; margin-top: 5%;" />');
@@ -74,7 +75,7 @@
 
           <div class="form-group">
             <?php
-              print('<input type="password" class="rouded-0 form-control" class="field" name="password" placeholder="Mot de passe" ');
+              print('<input type="password" class="rouded-0 form-control" class="field" name="password" placeholder="Mot de passe*" ');
               if($errors["password"] != "")
               {
                 print('style="background-color: #f88; border-color: #f22; border-style: solid; border-width: 0.3vh; margin-top: 5%;" />');
@@ -89,7 +90,7 @@
 
           <div class="form-group">
             <?php
-              print('<input type="password" class="rouded-0 form-control" class="field" name="password2" placeholder="Confirmation du mot de passe" ');
+              print('<input type="password" class="rouded-0 form-control" class="field" name="password2" placeholder="Confirmation du mot de passe*" ');
               if($errors["password"] != "")
               {
                 print('style="background-color: #f88; border-color: #f22; border-style: solid; border-width: 0.3vh; margin-top: 5%;" />');
