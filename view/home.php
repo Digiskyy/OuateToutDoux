@@ -23,20 +23,20 @@
 
 </head>
 
-<body style="background-color: #f8ca9c;">
+<body style="background-color: #FDE6C5;">
     <div>
         <!-- header -->
         <div class="shadow-lg header-dark" style="height: 150px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><img src="view/img/logo.svg" style="width: 10%;max-width: 10%;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a href="/dashboard"><img src="view/img/logo.svg" style="width: 5em;max-width: 5em;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"></li>
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
                             <div class="form-group" style="margin-left: 30%;">
-                                <input type="search" class="rounded-0 form-control search-field" id="search-field" name="search" style="background-color: #f8ca9c;" /><label for="search-field">
-                                <button class="btn rounded-0" type="submit" style="height: 38px;width: 34px;background-color: #f6b99c;margin-left: 0px;">
+                                <input type="search" class="rounded-0 form-control search-field" id="search-field" name="search" style="background-color: #FDE6C5;" /><label for="search-field">
+                                <button class="btn rounded-0" type="submit" style="height: 38px;width: 34px;background-color: #FDE6C5;margin-left: 0px;">
                                     <i class="fa fa-search rounded-0" id="search-icon" style="font-size: 20px;margin-left: -4px;"></i>
                                 </button></label>
                             </div>
@@ -56,18 +56,18 @@
         <!-- end header -->
 
         <!-- task list form -->
-        <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;"><img class="shadow-lg" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg"></a>
-        <div id="popup" class="hide" style="position: absolute;display: none;margin-left:45%;">
-            <div class="login-clean" style="background-color: #f8ca9c;">
+        <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #FDE6C5;border:none;"><img class="shadow-lg" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg"></a>
+        <div id="popup" class="hide">
+            <div class="login-clean" style="background-color: #FDE6C5;">
                 <form class="shadow" style="background-color: #f6b99c;" action="/create_list" method="post">
-                    <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                    <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #FDE6C5;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
                     <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php
                         date_default_timezone_set('UTC');
-                        echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                        echo date("d/m/y"); ?>" style="background-color: #FDE6C5;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
                     <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
                     date_default_timezone_set('UTC');
-                    echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-                    <div class="form-group" style="display:inline flex"><button class="btn btn-primary btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
+                    echo date("d/m/y"); ?>" style="background-color: #FDE6C5;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                    <div class="form-group" style="display:inline flex"><button class="btn btn-primary btn  -block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
                     <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;margin-left:10%;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
                 </form>
             </div>

@@ -33,7 +33,7 @@
         <!-- header -->
         <div class="shadow-lg header-dark" style="height: 150px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><a href="/dashboard"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a> 
+                <div class="container"><a href="/dashboard"> <img src="/view/img/logo.svg" style="width: 5em;max-width: 5em;"></a> 
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
