@@ -26,15 +26,15 @@
 <body style="background-color: #f8ca9c;">
     <div>
         <!-- header -->
-        <div class="shadow-lg header-dark" style="height: 150px;">
+        <div class="shadow-lg header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><img src="view/img/logo.svg" style="width: 10%;max-width: 10%;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"></li>
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group" style="margin-left: 30%;">
+                            <div class="form-group" style="margin-left: 0;">
                                 <input type="search" class="rounded-0 form-control search-field" id="search-field" name="search" style="background-color: #f8ca9c;" /><label for="search-field">
                                 <button class="btn rounded-0" type="submit" style="height: 38px;width: 34px;background-color: #f6b99c;margin-left: 0px;">
                                     <i class="fa fa-search rounded-0" id="search-icon" style="font-size: 20px;margin-left: -4px;"></i>
