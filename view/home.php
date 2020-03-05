@@ -26,7 +26,7 @@
 <body style="background-color: #f8ca9c;">
     <div>
         <!-- header -->
-        <div class="shadow-lg header-dark" style="height: 100px;">
+        <div class="shadow-sm header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
                 <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
@@ -56,20 +56,24 @@
         <!-- end header -->
 
         <!-- task list form -->
-        <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;"><img class="shadow-lg" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg"></a>
-        <div id="popup" class="hide" style="position: absolute;display: none;margin-left:45%;">
-            <div class="login-clean" style="background-color: #f8ca9c;">
-                <form class="shadow" style="background-color: #f6b99c;" action="/create_list" method="post">
-                    <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-                    <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php
+        <div style="display:flex;">
+            <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;">
+                <img class="shadow-sm" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg">
+            </a>
+            <div id="popup" class="hide" style="position: absolute;display: none;margin-left:45%;">
+                <div class="login-clean" style="background-color: #f8ca9c;padding:0;margin-top:10%;">
+                    <form class="shadow" style="background-color: #f6b99c;" action="/create_list" method="post">
+                        <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                        <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php
+                            date_default_timezone_set('UTC');
+                            echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
+                        <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
                         date_default_timezone_set('UTC');
                         echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-                    <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
-                    date_default_timezone_set('UTC');
-                    echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-                    <div class="form-group" style="display:inline flex"><button class="btn btn-primary btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
-                    <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;margin-left:10%;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
-                </form>
+                        <div class="form-group" style="display:inline flex;"><button class="btn btn-primary btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
+                        <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;margin-left:10%;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
+                    </form>
+                </div>
             </div>
         </div>
         <script>
