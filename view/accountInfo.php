@@ -33,7 +33,8 @@
         <!-- header -->
         <div class="shadow-lg header-dark" style="height: 150px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a href="/dashboard"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a> 
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"></li>
@@ -153,24 +154,6 @@
             
         </script>
         
-        <?php
-            if(isset($_POST['name'])){
-                $lastName = $_POST['name'];
-            }
-            if(isset($_POST['surname'])){
-                $firstName = $_POST['surname'];
-            }
-            if(isset($_POST['email'])){
-                $email = $_POST['email'];
-            }
-            $stmt = $pdo->prepare("UPDATE Users set lastname = :name, firstname = :firstname, Mail=:email where idUser = :actualID");
-            $stmt->bindParam("name", $lastName);
-            $stmt->bindParam("firstname", $firstName);
-            $stmt->bindParam("email", $email);
-            $stmt->bindParam("actualID", $id);
-            $stmt->execute();
-            $stmt->closeCursor();
-        ?>
 
 </body>
 
