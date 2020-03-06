@@ -106,7 +106,7 @@
 
 
         </form>
-        
+        <a href="/deleteAccount">Supprimer le compte</a>
         
          <script language="JavaScript">
             var modifyNam = false;
@@ -140,7 +140,8 @@
             }
             
             //Modify email
-            function modifyEmail(){
+            function modifyEmail()
+            {
                 if(!modifyEmai){
                     document.getElementById("usr-e-mail").removeAttribute("readOnly");
                     document.getElementById("img_email").src = "/view/img/validate.png";
@@ -151,6 +152,7 @@
                     modifyEmai = false;
                 }
             }
+
             
         </script>
         
