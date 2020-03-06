@@ -23,7 +23,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
         <script src="js/jquery.min.js"></script>
-        
+
     <title>Personnal-Info</title>
 </head>
 
@@ -33,7 +33,7 @@
         <!-- header -->
         <div class="shadow-lg header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a> 
+                <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
@@ -62,7 +62,7 @@
         <!-- end header -->
 
         <?php
-            require_once("controller/accountInfoController.php");         
+            require_once("controller/accountInfoController.php");
         ?>
 
         <form method="post" action="/accountInfo" id="usr-info-form" class="info-form">
@@ -78,7 +78,7 @@
 
             <div class="form-info-line">
                 <label>Prénom : </label>
-                
+
                 <input type="text" id="usr-first-name" name="surname" value="<?php echo  $firstName; ?>" readOnly="true">
                 <a href="#">
                     <img alt="Modify first name on click" id="img_first_name" src="/view/img/pencil.png" width="30" height="30" onClick="modifyFirstName()">
@@ -95,24 +95,34 @@
             </div>
 
             <div class="form-info-line">
-                <label>Mot de Passe : </label>
-                <input type="text" name="usr-password">
-                <a href="#">
-                    <img alt="Modify password on click" src="/view/img/pencil.png" width="30" height="30">
-                </a>
+                <label>Ancien mot de passe : </label>
+                <input type="password" name="old-usr-password">
             </div>
-            
+            <div class="form-info-line">
+                <label>Nouveau mot de passe : </label>
+                <input type="password" name="new-usr-password">
+            </div>
+            <div class="form-info-line">
+                <label>Confirmation : </label>
+                <input type="password" name="new-usr-password-confirmation">
+            </div>
+
             <input type="submit">
 
 
         </form>
+<<<<<<< HEAD
         <a href="/deleteAccount">Supprimer le compte</a>
         
+=======
+
+
+>>>>>>> 07733c181a8d637cd17535112165990447972096
          <script language="JavaScript">
             var modifyNam = false;
             var modifyFirstNam = false;
             var modifyEmai = false;
-            
+
             //Modify Name
             function modifyName(){
                 if(!modifyNam){
@@ -125,7 +135,7 @@
                     modifyNam = false;
                 }
             }
-            
+
             //Modify first name
             function modifyFirstName(){
                 if(!modifyFirstNam){
@@ -138,7 +148,7 @@
                     modifyFirstNam = false;
                 }
             }
-            
+
             //Modify email
             function modifyEmail()
             {
@@ -153,9 +163,12 @@
                 }
             }
 
+<<<<<<< HEAD
             
+=======
+>>>>>>> 07733c181a8d637cd17535112165990447972096
         </script>
-        
+
 
 </body>
 
