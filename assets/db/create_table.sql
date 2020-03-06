@@ -17,6 +17,11 @@ CREATE TABLE Lists (
 	FOREIGN KEY (idUserOwner) REFERENCES Users(idUser) ON UPDATE CASCADE ON DELETE CASCADE
 ) ;
 
+CREATE TRIGGER INSERT_PARTICIPATIONS AFTER INSERT on Lists
+BEGIN
+	INSERT into Participations(dateJoin,idUser,idList) values (datetime('now','localtime'), new.idUserOwner,new.idList);
+End
+
 CREATE TABLE Participations (
 	idParticipation INTEGER PRIMARY KEY AUTOINCREMENT,
 	dateJoin DATETIME NOT NULL,
