@@ -57,15 +57,14 @@
 
         <!-- task list form -->
         <div style="display:flex;">
-            <a class="btn" id="showpopup" style="margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;">
-                <img class="shadow-sm" id="popup_icon" style="border-radius:50%;" src="view/img/plus.svg">
+            <a class="btn" id="showpopup" style="transition: all ease 0.3s;margin-left:90%;margin-top:3%;background-color: #f8ca9c;border:none;">
+                <img class="shadow-sm" id="popup_icon" style="transition: all ease 0.3s;border-radius:50%;" src="view/img/plus.svg">
             </a>
             <div id="popup" class="hide" style="position: absolute;display: none;margin-left:45%;">
                 <div class="login-clean" style="background-color: #f8ca9c;padding:0;margin-top:10%;">
                     <form class="shadow" style="background-color: #f6b99c;" action="/create_list" method="post">
                         <div class="form-group"><label>Nom*</label><input type="text" class="rouded-0 form-control" name="title" placeholder="Liste" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-                        <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php
-                            date_default_timezone_set('UTC');
+                        <div class="form-group"><label>Date de début</label><input class="rouded-0 form-control" name="begin-date" placeholder="<?php date_default_timezone_set('UTC');
                             echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
                         <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
                         date_default_timezone_set('UTC');
@@ -83,25 +82,25 @@
             
             //Hide the form
             function hidePopupClass(){
-                popup.className = "show"
-                popup.style.display = "block"
-                popup_icon.src = "view/img/less.svg"
+                popup.className = "hide"
+                popup.style.display = "none"
+                popup_icon.style.transform = "none"
             }
             
             //Show the form
             function showPopupClass(){
-                popup.className = "hide"
-                popup.style.display = "none"
-                popup_icon.src = "view/img/plus.svg"
+                popup.className = "show"
+                popup.style.display = "block"
+                popup_icon.style.transform = "rotate(45deg)"
             }
             
             showpopup.addEventListener("click" , function(){
                 switch(popup.className){
                     case "hide": 
-                        hidePopupClass()
+                        showPopupClass()
                     break
                     case "show":
-                        showPopupClass()
+                        hidePopupClass()
                     break
                     default: 
                         alert("Si t'enlèves le d de Gady ça fait gay")
