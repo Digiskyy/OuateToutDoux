@@ -16,13 +16,26 @@ $id = $user->idUser;
 
 $pdo = App::getPDO();
 
-$title = htmlspecialchars($_POST["title"]);
-$beginDate = isset($_POST["begin-date"]) && strlen($_POST["begin-date"]) > 0 ? htmlspecialchars($_POST["begin-date"]) : date("Y-m-d H:i");
-$endDate = htmlspecialchars($_POST["end-date"]);
+$id_list = $_GET["id"] ?? null;
+if (!isset($id_list)) header("location: /dashboard");
+$pdo = App::getPDO();
+$stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idList");
+$stmt->execute(["idList" => $id_list]);
+if ($stmt->fetchColumn() <= 0) {
+  // Ne participe pas a cette liste
+  header("location: /dashboard");
+}
 
-$stmt = $pdo->prepare("INSERT INTO Lists(title, dateCreation, dateEnd, idUserOwner) VALUES (:title, :beg, :endDate, :idUser)");
-$stmt->execute(["idUser" => $id, "title" => $title, "beg" => $beginDate, "endDate" => $endDate]);
-$idList = $pdo->lastInsertId();
+$title = htmlspecialchars($_POST["title"]);
+$idList = htmlspecialchars($_POST["id-list"]);
+$dateCreation = date("Y-m-d H:i");
+
+$stmt = $pdo->prepare("INSERT INTO Tasks(title, dateCreation, idUserCreation, idList) VALUES (:title, :beg, :idUser, :idList)");
+$stmt->execute(["idUser" => $id, "title" => $title, "beg" => $dateCreation, "idList" => $idList]);
+$idTask = $pdo->lastInsertId();
 $stmt->closeCursor();
+if ($idTask) {
+  echo json_encode(["idUser" => $id, "title" => $title, "beg" => $dateCreation, "idList" => $idList]);
+}
 
 header("location: /liste?id=".$idList);
