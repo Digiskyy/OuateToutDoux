@@ -108,7 +108,7 @@
             </div>
 
             <input type="submit">
-
+            <input type="submit" value="Supprimer compte" onClick="deleteAccount()">
 
         </form>
 
@@ -155,6 +155,15 @@
                     document.getElementById("usr-e-mail").setAttribute("readOnly", "true");
                     document.getElementById("img_email").src = "/view/img/pencil.png";
                     modifyEmai = false;
+                }
+            }
+            
+            function deleteAccount()
+            {
+                if(confirm("Etes vous sûr de vouloir supprimer votre compte ?")){
+                    window.location.assign("/deleteAccount");
+                    // Recharge la page actuelle, sans utiliser le cache
+                    document.location.reload(true);
                 }
             }
 
