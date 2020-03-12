@@ -23,7 +23,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
         <script src="js/jquery.min.js"></script>
-        
+
     <title>Personnal-Info</title>
 </head>
 
@@ -31,7 +31,7 @@
 
     <div>
         <!-- header -->
-        <div class="shadow-lg header-dark" style="height: 150px;">
+        <div class="shadow-lg header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
                 <div class="container"><a href="/dashboard"> <img src="/view/img/logo.svg" style="width: 5em;max-width: 5em;"></a> 
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -40,7 +40,7 @@
                             <li class="nav-item" role="presentation"></li>
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group" style="margin-left: 30%;">
+                            <div class="form-group" style="margin-left: 0;">
                                 <input type="search" class="rounded-0 form-control search-field" id="search-field" name="search" style="background-color: #f8ca9c;" /><label for="search-field">
                                 <button class="btn rounded-0" type="submit" style="height: 38px;width: 34px;background-color: #f6b99c;margin-left: 0px;">
                                     <i class="fa fa-search rounded-0" id="search-icon" style="font-size: 20px;margin-left: -4px;"></i>
@@ -53,7 +53,7 @@
                             </a>
                             <div role="menu" class="dropdown-content">
                                 <a role="presentation" class="dropdown-item" href="/accountInfo">Mes informations</a>
-                                <a role="presentation" class="dropdown-item" href="/deconnexion">DÃ©connexion <ion-icon name="power-outline"></ion-icon></a></div>
+                                <a role="presentation" class="dropdown-item" href="/deconnexion">Déconnexion <ion-icon name="power-outline"></ion-icon></a></div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
         <!-- end header -->
 
         <?php
-            require_once("controller/accountInfoController.php");         
+            require_once("controller/accountInfoController.php");
         ?>
 
         <form method="post" action="/accountInfo" id="usr-info-form" class="info-form">
@@ -78,7 +78,7 @@
 
             <div class="form-info-line">
                 <label>Prénom : </label>
-                
+
                 <input type="text" id="usr-first-name" name="surname" value="<?php echo  $firstName; ?>" readOnly="true">
                 <a href="#">
                     <img alt="Modify first name on click" id="img_first_name" src="/view/img/pencil.png" width="30" height="30" onClick="modifyFirstName()">
@@ -95,24 +95,29 @@
             </div>
 
             <div class="form-info-line">
-                <label>Mot de Passe : </label>
-                <input type="text" name="usr-password">
-                <a href="#">
-                    <img alt="Modify password on click" src="/view/img/pencil.png" width="30" height="30">
-                </a>
+                <label>Ancien mot de passe : </label>
+                <input type="password" name="old-usr-password">
             </div>
-            
+            <div class="form-info-line">
+                <label>Nouveau mot de passe : </label>
+                <input type="password" name="new-usr-password">
+            </div>
+            <div class="form-info-line">
+                <label>Confirmation : </label>
+                <input type="password" name="new-usr-password-confirmation">
+            </div>
+
             <input type="submit">
 
 
         </form>
-        
+        <a href="/deleteAccount">Supprimer le compte</a>
         
          <script language="JavaScript">
             var modifyNam = false;
             var modifyFirstNam = false;
             var modifyEmai = false;
-            
+
             //Modify Name
             function modifyName(){
                 if(!modifyNam){
@@ -125,7 +130,7 @@
                     modifyNam = false;
                 }
             }
-            
+
             //Modify first name
             function modifyFirstName(){
                 if(!modifyFirstNam){
@@ -138,9 +143,10 @@
                     modifyFirstNam = false;
                 }
             }
-            
+
             //Modify email
-            function modifyEmail(){
+            function modifyEmail()
+            {
                 if(!modifyEmai){
                     document.getElementById("usr-e-mail").removeAttribute("readOnly");
                     document.getElementById("img_email").src = "/view/img/validate.png";
@@ -151,9 +157,10 @@
                     modifyEmai = false;
                 }
             }
+
             
         </script>
-        
+
 
 </body>
 

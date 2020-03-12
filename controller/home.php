@@ -19,5 +19,6 @@ while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
   $task_list[] = $result;
 }
 
+print_r($task_list);
 
 require_once("view/home.php");

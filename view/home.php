@@ -26,7 +26,7 @@
 <body style="background-color: #FDE6C5;">
     <div>
         <!-- header -->
-        <div class="shadow-lg header-dark" style="height: 150px;">
+        <div class="shadow-sm header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
                 <div class="container"><a href="/dashboard"><img src="view/img/logo.svg" style="width: 5em;max-width: 5em;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
@@ -79,25 +79,25 @@
             
             //Hide the form
             function hidePopupClass(){
-                popup.className = "show"
-                popup.style.display = "block"
-                popup_icon.src = "view/img/less.svg"
+                popup.className = "hide"
+                popup.style.display = "none"
+                popup_icon.style.transform = "none"
             }
             
             //Show the form
             function showPopupClass(){
-                popup.className = "hide"
-                popup.style.display = "none"
-                popup_icon.src = "view/img/plus.svg"
+                popup.className = "show"
+                popup.style.display = "block"
+                popup_icon.style.transform = "rotate(45deg)"
             }
             
             showpopup.addEventListener("click" , function(){
                 switch(popup.className){
                     case "hide": 
-                        hidePopupClass()
+                        showPopupClass()
                     break
                     case "show":
-                        showPopupClass()
+                        hidePopupClass()
                     break
                     default: 
                         alert("Si t'enlèves le d de Gady ça fait gay")

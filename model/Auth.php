@@ -61,12 +61,14 @@ class Auth
   {
     if (session_status() === PHP_SESSION_NONE)
       session_start();
+      
     $query = $this->pdo->prepare("SELECT * FROM Users WHERE mail=:mail");
     $query->execute(["mail" => $mail]);
     $this->user = $query->fetchObject(User::class);
     if (!$this->user) return null;
 
-    if (password_verify($password, $this->user->password)) {
+    if (password_verify($password, $this->user->password))
+    {
       $_SESSION["auth"] = intval($this->user->idUser);
       return $this->user;
     }
