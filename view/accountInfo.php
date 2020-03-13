@@ -111,13 +111,8 @@
 
 
         </form>
-<<<<<<< HEAD
         <a href="/deleteAccount">Supprimer le compte</a>
         
-=======
-
-
->>>>>>> 07733c181a8d637cd17535112165990447972096
          <script language="JavaScript">
             var modifyNam = false;
             var modifyFirstNam = false;
