@@ -65,7 +65,9 @@ class Auth
     $query = $this->pdo->prepare("SELECT * FROM Users WHERE mail=:mail");
     $query->execute(["mail" => $mail]);
     $this->user = $query->fetchObject(User::class);
-    if (!$this->user) return null;
+    
+    if (!$this->user)
+      return null;
 
     if (password_verify($password, $this->user->password))
     {
