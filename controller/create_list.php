@@ -16,7 +16,7 @@ $id = $user->idUser;
 $pdo = App::getPDO();
 
 $title = htmlspecialchars($_POST["title"]);
-$beginDate = isset($_POST["begin-date"]) && strlen($_POST["begin-date"]) > 0 ? htmlspecialchars($_POST["begin-date"]) : date("Y-m-d H:i");
+$beginDate = isset($_POST["begin-date"]) && strlen($_POST["begin-date"]) > 0 ? htmlspecialchars($_POST["begin-date"]) : date("d/m/Y");
 $endDate = htmlspecialchars($_POST["end-date"]);
 
 $stmt = $pdo->prepare("INSERT INTO Lists(title, dateCreation, dateEnd, idUserOwner) VALUES (:title, :beg, :endDate, :idUser)");

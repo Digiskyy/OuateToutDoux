@@ -48,7 +48,9 @@ $router
     $auth->require_auth(); // Si l'utilisateur n'est pas connecté, il sera automatiquement redirigé vers /connexion
     require_once("controller/create_list.php");
   })
-
+  ->post("/create_task", function() {
+    require_once("controller/create_task.php");
+  })
   ->get("/deleteAccount", function()
   {
     require_once("controller/deleteAccount.php");

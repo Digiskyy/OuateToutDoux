@@ -16,7 +16,6 @@ $id = $user->idUser;
 
 $pdo = App::getPDO();
 
-$id_list = $_GET["id"] ?? null;
 if (!isset($id_list)) header("location: /dashboard");
 $pdo = App::getPDO();
 $stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idList");
@@ -34,8 +33,4 @@ $stmt = $pdo->prepare("INSERT INTO Tasks(title, dateCreation, idUserCreation, id
 $stmt->execute(["idUser" => $id, "title" => $title, "beg" => $dateCreation, "idList" => $idList]);
 $idTask = $pdo->lastInsertId();
 $stmt->closeCursor();
-if ($idTask) {
-  echo json_encode(["idUser" => $id, "title" => $title, "beg" => $dateCreation, "idList" => $idList]);
-}
-
-header("location: /liste?id=".$idList);
+header("location: /liste?id=" . $idList);
