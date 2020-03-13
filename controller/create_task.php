@@ -24,13 +24,12 @@ $idList = htmlspecialchars($_POST["id-list"]);
 
 $stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idList AND Participations.idUser=:idUser");
 $stmt->execute(["idList" => $idList, "idUser" => $my_id]);
-if ($stmt->fetchColumn() <= 0) {
+if ($stmt->rowCount() <= 0) {
   // Ne participe pas a cette liste
   header("location: /dashboard");
 }
 
 $stmt = $pdo->prepare("INSERT INTO Tasks(title, dateCreation, idUserCreation, idList) VALUES (:title, :beg, :idUser, :idList)");
 $stmt->execute(["idUser" => $id, "title" => $title, "beg" => $dateCreation, "idList" => $idList]);
-$idTask = $pdo->lastInsertId();
 $stmt->closeCursor();
 header("location: /liste?id=" . $idList);
