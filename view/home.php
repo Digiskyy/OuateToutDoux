@@ -112,7 +112,25 @@
         <!-- core -->
         <div class="container hero">
             <div class="row">
-                <div class="col-md-8 offset-md-2"></div>
+                <div class="col-md-8 offset-md-2">
+                    <?php
+                        foreach ($task_list as $task) {
+                    ?>
+                    <a href = <?="/liste?id=".$task["idList"]?>>
+                        <div>
+                            <?= $task["title"] ?>
+                        </div>
+                        <div>
+                            <?= $task["dateCreation"] ?>
+                        </div>
+                        <div>
+                            <?= $task["dateEnd"] ?>
+                        </div>
+                    </a>
+                    <?php
+                        }
+                    ?>
+                </div>
             </div>
         </div>
         <!-- end core -->
