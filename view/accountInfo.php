@@ -111,13 +111,8 @@
             <input type="submit" value="Supprimer compte" onClick="deleteAccount()">
 
         </form>
-<<<<<<< HEAD
-        <a href="/deleteAccount">Supprimer le compte</a>
-        
-=======
 
 
->>>>>>> d6bd160a414190f617a0b507bc46874973dcf787
          <script language="JavaScript">
             var modifyNam = false;
             var modifyFirstNam = false;
@@ -165,7 +160,7 @@
             
             function deleteAccount()
             {
-                if(confirm("Etes vous sûr de vouloir supprimer votre compte ?")){
+                if(confirm("Etes vous sï¿½r de vouloir supprimer votre compte ?")){
                     window.location.assign("/deleteAccount");
                     // Recharge la page actuelle, sans utiliser le cache
                     document.location.reload(true);
