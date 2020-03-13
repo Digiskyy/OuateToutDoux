@@ -31,7 +31,7 @@
         <legend>Ajouter une tâche</legend>
         <label for="title-input">Titre de la tâche: </label><input type="text" name="title" id="title-input">
         <input type="hidden" name="id-list" value=<?= $id_list ?>>
-        <input type="submit" value="Ajouter">
+        <input type="submit" name="submit" value="Ajouter">
       </fieldset>
     </form>
     <h2>Liste des membres:</h2>
