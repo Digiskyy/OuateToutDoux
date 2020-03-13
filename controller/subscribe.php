@@ -55,7 +55,7 @@ else
     $errors["mail"] = "Email invalide";
 
   if (!preg_match("/.{8,35}/", $password)) // Password must follow the proper format // /^(?=.[!@#$%^&-])(?=.[0-9])(?=.[A-Z]).{8,35}$/
-    $errors["password"] = "Mot de passe doit contenir entre 8 et 35 caractères)";
+    $errors["password"] = "Le mot de passe doit contenir entre 8 et 35 caractères.";
 
   if ($password !== secure_string($_POST["password2"])) // Check if password and password confirmation match
     $errors["password"] = "Mots de passe différents";

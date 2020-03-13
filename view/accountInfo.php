@@ -98,17 +98,35 @@
                 <label>Ancien mot de passe : </label>
                 <input type="password" name="old-usr-password">
             </div>
+            <?php
+                if(isset($error["oldPassword"]))
+                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["oldPassword"] . "<br/></div>");
+            ?>
+
             <div class="form-info-line">
                 <label>Nouveau mot de passe : </label>
                 <input type="password" name="new-usr-password">
             </div>
+            <?php
+                if(isset($error["newPasswordFormat"])) 
+                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordFormat"] . "<br/></div>");
+            ?>
+
             <div class="form-info-line">
                 <label>Confirmation : </label>
                 <input type="password" name="new-usr-password-confirmation">
             </div>
+            <?php
+                if(isset($error["passwordsNotFilled"])) 
+                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["passwordsNotFilled"] . "<br/></div>");
+                elseif(isset($error["newPasswordFormat"])) 
+                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordFormat"] . "<br/></div>");
+                elseif(isset($error["newPasswordConf"]))
+                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordConf"] . "<br/></div>");
+            ?>
 
-            <input type="submit">
-            <input type="submit" value="Supprimer compte" onClick="deleteAccount()">
+            <input type="submit" value="Modifier compte" name="submit">
+            <input type="button" value="Supprimer compte" onClick="deleteAccount()">
 
         </form>
 
@@ -160,7 +178,7 @@
             
             function deleteAccount()
             {
-                if(confirm("Etes vous s�r de vouloir supprimer votre compte ?")){
+                if(confirm("Etes vous sûr de vouloir supprimer votre compte ?")){
                     window.location.assign("/deleteAccount");
                     // Recharge la page actuelle, sans utiliser le cache
                     document.location.reload(true);
