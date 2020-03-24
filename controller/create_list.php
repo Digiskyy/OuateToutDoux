@@ -26,4 +26,4 @@ $stmt->closeCursor();
 
 //header("location: /liste?id=".$idList);
 // "str".$str2 est la concaténation de $str et $str2
-header("location: /list?id=".$idList);
+header("location: /liste?id=".$idList);

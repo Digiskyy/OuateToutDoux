@@ -15,8 +15,8 @@ $my_id = $user->idUser;
 $id_list = $_GET["id"] ?? null;
 if (!isset($id_list)) header("location: /dashboard");
 $pdo = App::getPDO();
-$stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idList AND Participations.idUser=:idUser");
-$stmt->execute(["idList" => $id_list, "idUser" => $my_id]);
+$stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idl AND idUser=:idu");
+$stmt->execute(["idl" => $id_list, "idu" => $my_id]);
 if ($stmt->fetchColumn() <= 0) {
   // Ne participe pas a cette liste
   header("location: /dashboard");
