@@ -24,4 +24,6 @@ $stmt->execute(["idUser" => $id, "title" => $title, "beg" => $beginDate, "endDat
 $idList = $pdo->lastInsertId();
 $stmt->closeCursor();
 
-header("location: /liste?id=".$idList);
+//header("location: /liste?id=".$idList);
+// "str".$str2 est la concaténation de $str et $str2
+header("location: /list?id=".$idList);

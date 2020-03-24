@@ -22,9 +22,11 @@ if ($stmt->fetchColumn() <= 0) {
   header("location: /dashboard");
 }
 
-$stmt = $pdo->prepare("SELECT title FROM Lists WHERE Lists.idList=:idList");
+$stmt = $pdo->prepare("SELECT title, idUserOwner FROM Lists WHERE Lists.idList=:idList");
 $stmt->execute(["idList" => $id_list]);
-$title = $stmt->fetch(PDO::FETCH_ASSOC)["title"];
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
+$title = $data["title"];
+$idUserOwner = $data["idUserOwner"];
 
 $stmt = $pdo->prepare("SELECT * FROM Lists, Tasks WHERE Lists.idList=Tasks.idList AND Lists.idList=:idList");
 $stmt->execute(["idList" => $id_list]);

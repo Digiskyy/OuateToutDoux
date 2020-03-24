@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="view/css/Header-Dark.compiled.css">
   <link rel="stylesheet" href="view/css/Login-Form-Clean.css" />
   <link rel="stylesheet" href="view/css/home.css">
+  <link rel="stylesheet" href="view/css/task_list.css">
 
   <!-- js -->
   <script src="view/js/bootstrap.min.js"></script>
@@ -23,42 +24,150 @@
 
 </head>
 
-<body>
-  <h1><?= $title ?></h1>
+<body style="background-color: #f8ca9c;">
   <div>
-    <form action="/create_task" method="POST">
-      <fieldset>
-        <legend>Ajouter une tâche</legend>
-        <label for="title-input">Titre de la tâche: </label><input type="text" name="title" id="title-input">
-        <input type="hidden" name="id-list" value=<?= $id_list ?>>
-        <input type="submit" name="submit" value="Ajouter">
-      </fieldset>
-    </form>
-    <h2>Liste des membres:</h2>
-    <ul>
-      <?php
-      foreach ($user_list as $user) {
-      ?>
-        <li>
-          <?= $user->pseudo ?>
-        </li>
-      <?php
+    <!-- header -->
+    <div class="shadow-sm header-dark" style="height: 100px;">
+      <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+        <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav">
+              <li class="nav-item" role="presentation"></li>
+            </ul>
+            <form class="form-inline mr-auto" target="_self">
+              <div class="form-group" style="margin-left: 0;">
+                <input type="search" class="rounded-0 form-control search-field" id="search-field" name="search" style="background-color: #f8ca9c;" /><label for="search-field">
+                  <button class="btn rounded-0" type="submit" style="height: 38px;width: 34px;background-color: #f6b99c;margin-left: 0px;">
+                    <i class="fa fa-search rounded-0" id="search-icon" style="font-size: 20px;margin-left: -4px;"></i>
+                  </button></label>
+              </div>
+            </form>
+            <div class="dropdown">
+              <a aria-expanded="false" class="user rounded-0 float-right" href="#" style="margin-right: 0px;margin-top:30%;width: 123px;height: 83px;">
+                <img class="float-right" src="view/img/user.svg" style="width: 85%;height: 75%;margin-right: 5%;" />
+              </a>
+              <div role="menu" class="dropdown-content">
+                <a role="presentation" class="dropdown-item" href="/accountInfo">Mes informations</a>
+                <a role="presentation" class="dropdown-item" href="/deconnexion">Déconnexion <ion-icon name="power-outline"></ion-icon></a></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- end header -->
+
+    <div id="popupAddTask" class="hide" style="position: absolute;display: none;margin-left:45%; z-index: 999;">
+      <div class="login-clean" style="background-color: #f8ca9c;padding:0; margin-top: 10%;">
+        <form class="shadow" style="background-color: #f6b99c; width: 100%;" action="/create_task" method="post">
+          <div class="form-group">
+            <label>Titre*</label>
+            <input type="text" class="rouded-0 form-control" name="title" placeholder="Ma nouvelle tâche" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+
+            <input type="hidden" name="id-list" value=<?= $id_list ?>>
+          </div>
+          <div class="form-group" style="display:flex; flex-direction: column; align-items: center; margin-top: 64px;">
+            <button class="btn btn-outline-dark btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="hidePopupClass()">Annuler</button>
+            <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175; border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- core -->
+    <div class="container hero">
+      <h1 style="text-align: center; margin: 16px 0;">"<?= $title ?>" liste</h1>
+      <div class="row">
+        <div class="col-md-7">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+            <h2>Les tâches :</h2>
+            <button id="popupAddTaskToggle" type="button" class="btn btn-outline-dark" onclick="togglePopupAddTask()">Créer tâche</button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <?php
+            foreach ($task_list as $task) {
+            ?>
+              <li class="list-group-item list-of-lists">
+                <span><?= $task["title"] ?> </span>
+                <span>créée : <?= $task["dateCreation"] ?> </span>
+                <form action="/delete_task" method="post" style="display: <?= $idUserOwner == $my_id ? "inherit" : "none" ?>">
+                  <input type="hidden" name="idList" value=<?= $id_list ?>>
+                  <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
+                  <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </form>
+              </li>
+            <?php
+            }
+            ?>
+          </ul>
+        </div>
+        <div class="col-md-4 offset-md-1">
+          <h2>Les membres :</h2>
+          <ul class="list-group list-group-flush">
+            <?php
+            foreach ($user_list as $user) {
+            ?>
+              <li class="list-group-item list-of-lists" style="display: flex; justify-content: space-between;">
+                <span><?= $user->pseudo ?></span>
+                <span><?= $user->idUser == $idUserOwner ? "créateur" : "" ?></span>
+              </li>
+            <?php
+            }
+            ?>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end core -->
+
+    <script>
+      var popupAddTask = document.getElementById("popupAddTask")
+      var popupAddTaskToggle = document.getElementById("popupAddTaskToggle")
+      var popup_icon = document.getElementById("popup_icon")
+
+
+      //Hide the form
+      function hidePopupClass() {
+        popupAddTask.className = "hide"
+        popupAddTask.style.display = "none"
+        popupAddTask.style.transform = "none"
+        popupAddTaskToggle.disabled = false
       }
-      ?>
-    </ul>
-    <h2>Liste des tâches:</h2>
-    <ul>
-      <?php
-      foreach ($task_list as $task) {
-      ?>
-        <li>
-          <?= print_r($task, true) ?>
-        </li>
-      <?php
+
+      //Show the form
+      function showPopupClass() {
+        popupAddTask.className = "show"
+        popupAddTask.style.display = "block"
+        popup_icon.style.transform = "rotate(45deg)"
+        popupAddTaskToggle.disabled = true
       }
-      ?>
-    </ul>
-  </div>
+
+      function togglePopupAddTask() {
+        switch (popupAddTask.className) {
+          case "hide":
+            showPopupClass()
+            break
+          case "show":
+            hidePopupClass()
+            break
+          default:
+            alert("Si t'enlèves le d de Gady ça fait gay")
+        }
+      }
+
+      function deleteTask(idTask) {
+        const idList = Number.parseInt("<?= $id_list ?>", 10)
+        fetch('/delete_task', {
+          method: 'post',
+          body: JSON.stringify({
+            idTask,
+            idList
+          })
+        }).then(function(response) {
+          location.reload()
+        }).then(function(data) {
+          console.log('error on delete a task')
+        });
+      }
+    </script>
 </body>
 
 </html>

@@ -1,67 +1,94 @@
 @charset "utf-8";
 
 /* body */
+
 body {
-	background-color: #f8ca9c;
+    background-color: #f8ca9c;
 }
 
+
 /* search bar */
+
 #search-field {
-	border-color: #908175;
-	border-style: solid;
-	border-width: 0.4vh; 
+    border-color: #908175;
+    border-style: solid;
+    border-width: 0.4vh;
 }
 
 #search-field:hover {
-	border-color: black;
+    border-color: black;
 }
 
 .fa-search {
-	color: #908175;
+    color: #908175;
 }
 
 .fa-search:hover {
-	color: black;
+    color: black;
 }
+
 
 /* user */
 
 .dropdown:hover .user {
-	opacity: 0.5;
+    opacity: 0.5;
 }
 
 .dropdown:hover .dropdown-content {
-	display: block;
+    display: block;
 }
-  
+
 .dropdown-content {
-	margin-top: 80%;
-	display: none;
-	position: absolute;
-	background-color: #f1f1f1;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
+    margin-top: 80%;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
+
 
 /* creer liste */
 
 #popup_icon {
-	background-color: #f6b99c;
+    background-color: #f6b99c;
 }
 
 #popup_icon:hover {
-	opacity: 0.75;
-	background-color:#908175;
+    opacity: 0.75;
+    background-color: #908175;
 }
 
 .btn-primary:hover {
-	opacity: 0.75;
+    opacity: 0.75;
+}
+
+
+/*show list and add task*/
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.list-of-lists {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(255, 255, 255, 0.3);
+}
+
+.list-of-lists:hover {
+    background: rgb(255, 255, 255, 0.5);
 }

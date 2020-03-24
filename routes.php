@@ -51,6 +51,9 @@ $router
   ->post("/create_task", function() {
     require_once("controller/create_task.php");
   })
+  ->post("/delete_task", function() {
+    require_once("controller/delete_task.php");
+  })
   ->get("/deleteAccount", function()
   {
     require_once("controller/deleteAccount.php");
