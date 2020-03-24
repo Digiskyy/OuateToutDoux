@@ -76,7 +76,7 @@
     <div class="container hero">
       <h1 style="text-align: center; margin: 16px 0;">"<?= $title ?>" liste</h1>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
           <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
             <h2>Les tâches :</h2>
             <button id="popupAddTaskToggle" type="button" class="btn btn-outline-dark" onclick="togglePopupAddTask()">Créer tâche</button>
@@ -86,20 +86,53 @@
             foreach ($task_list as $task) {
             ?>
               <li class="list-group-item list-of-lists">
-                <span><?= $task["title"] ?> </span>
-                <span>créée : <?= $task["dateCreation"] ?> </span>
-                <form action="/delete_task" method="post" style="display: <?= $idUserOwner == $my_id ? "inherit" : "none" ?>">
-                  <input type="hidden" name="idList" value=<?= $id_list ?>>
-                  <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
-                  <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </form>
+                <div style="display: flex;">
+                  <form action="/assign_task" method="post" style="margin-right: 8px;">
+                    <input type="hidden" name="idList" value=<?= $id_list ?>>
+                    <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
+                    <input type="hidden" name="myId" value=<?= $my_id ?>>
+                    <input type="checkbox" onclick="updateTaskState(<?= $task['idTask'] ?>, this.checked)" <?= $my_id != $task['idUserContribution'] ? "disabled" : "" ?> <?= $task['state'] == '1' ? "checked" : "" ?> aria-label="Checkbox for following text input">
+                  </form>
+                  <span><?= $task["title"] ?> </span>
+                </div>
+
+                <div style="display: flex; align-items: center;">
+                  <span style="margin-right: 16px;">créée : <?= $task["dateCreation"] ?> </span>
+                  <?php if ($task['idUserContribution'] != 0) {
+                    foreach ($user_list as $user) {
+                      if ($user->idUser == $task['idUserContribution']) { ?>
+                        <span class="badge badge-primary" style="color: white; background-color: grey; margin-right: 8px;"><?= $user->pseudo ?></span>
+                    <?php break;
+                      }
+                    }}?>
+                  <?php if ($task['idUserContribution'] == 0) { ?>
+                    <form action="/assign_task" method="post" style="margin-right: 8px;">
+                      <input type="hidden" name="idList" value=<?= $id_list ?>>
+                      <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
+                      <input type="hidden" name="myId" value=<?= $my_id ?>>
+                      <button type="submit" name="assign" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Se proposer"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    </form>
+                    <?php } else { ?>
+                    <form action="/assign_task" method="post" style="margin-right: 8px;">
+                      <input type="hidden" name="idList" value=<?= $id_list ?>>
+                      <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
+                      <input type="hidden" name="myId" value=<?= $my_id ?>>
+                      <button type="submit" name="release" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Se désister"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    </form>
+                  <?php } ?>
+                  <form action="/delete_task" method="post" style="display: <?= $idUserOwner == $my_id ? "inherit" : "none" ?>">
+                    <input type="hidden" name="idList" value=<?= $id_list ?>>
+                    <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
+                    <button type="submit" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Supprimer la tâche"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </form>
+                </div>
               </li>
             <?php
             }
             ?>
           </ul>
         </div>
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-3 offset-md-1">
           <h2>Les membres :</h2>
           <ul class="list-group list-group-flush">
             <?php
@@ -153,19 +186,14 @@
         }
       }
 
-      function deleteTask(idTask) {
-        const idList = Number.parseInt("<?= $id_list ?>", 10)
-        fetch('/delete_task', {
-          method: 'post',
-          body: JSON.stringify({
-            idTask,
-            idList
-          })
-        }).then(function(response) {
-          location.reload()
-        }).then(function(data) {
-          console.log('error on delete a task')
-        });
+      function updateTaskState(idTask, checked) {
+        console.log({
+          idTask,
+          checked
+        })
+        fetch(`/update_task?idTask=${idTask}&checked=${checked}`, {
+          method: 'POST'
+        }).then((res) => res.text()).then((data) => console.log(data))
       }
     </script>
 </body>

@@ -54,6 +54,12 @@ $router
   ->post("/delete_task", function() {
     require_once("controller/delete_task.php");
   })
+  ->post("/assign_task", function() {
+    require_once("controller/assign_task.php");
+  })
+  ->post("/update_task", function() {
+    require_once("controller/update_task.php");
+  })
   ->get("/deleteAccount", function()
   {
     require_once("controller/deleteAccount.php");
