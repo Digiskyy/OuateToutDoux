@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="view/css/task_list.css">
 
   <!-- js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="view/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
@@ -72,13 +73,29 @@
       </div>
     </div>
 
+    <div id="popupInvite" class="hide" style="position: absolute;display: none;margin-left:45%; z-index: 999;">
+      <div class="login-clean" style="background-color: #f8ca9c;padding:0; margin-top: 10%;">
+        <form class="shadow" style="background-color: #f6b99c; width: 100%;" action="/create_task" method="post">
+          <div class="form-group">
+            <label>Nom d'utilisateur*</label>
+            <input type="text" class="rouded-0 form-control" name="pseudo" placeholder="Ma nouvelle tâche" style="margin-bottom: 10%;background-color: #f8ca9c;border-color: #908175;border-style: solid;border-width: 0.3vh;" />
+
+            <input type="hidden" name="id-list" value=<?= $id_list ?>>
+          </div>
+          <div class="form-group" style="display:flex; flex-direction: column; align-items: center; margin-top: 64px;">
+            <button class="btn btn-outline-dark btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="hidePopupClass()">Annuler</button>
+            <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175; border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
+        </form>
+      </div>
+    </div>
+
     <!-- core -->
     <div class="container hero">
       <h1 style="text-align: center; margin: 16px 0;">"<?= $title ?>" liste</h1>
       <div class="row">
         <div class="col-md-8">
           <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-            <h2>Les tâches :</h2>
+            <h2>Tâches</h2>
             <button id="popupAddTaskToggle" type="button" class="btn btn-outline-dark" onclick="togglePopupAddTask()">Créer tâche</button>
           </div>
           <ul class="list-group list-group-flush">
@@ -102,9 +119,10 @@
                     foreach ($user_list as $user) {
                       if ($user->idUser == $task['idUserContribution']) { ?>
                         <span class="badge badge-primary" style="color: white; background-color: grey; margin-right: 8px;"><?= $user->pseudo ?></span>
-                    <?php break;
+                  <?php break;
                       }
-                    }}?>
+                    }
+                  } ?>
                   <?php if ($task['idUserContribution'] == 0) { ?>
                     <form action="/assign_task" method="post" style="margin-right: 8px;">
                       <input type="hidden" name="idList" value=<?= $id_list ?>>
@@ -112,7 +130,7 @@
                       <input type="hidden" name="myId" value=<?= $my_id ?>>
                       <button type="submit" name="assign" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Se proposer"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                     </form>
-                    <?php } else { ?>
+                  <?php } else if ($task['idUserContribution'] == $my_id) { ?>
                     <form action="/assign_task" method="post" style="margin-right: 8px;">
                       <input type="hidden" name="idList" value=<?= $id_list ?>>
                       <input type="hidden" name="idTask" value=<?= $task['idTask'] ?>>
@@ -133,7 +151,19 @@
           </ul>
         </div>
         <div class="col-md-3 offset-md-1">
-          <h2>Les membres :</h2>
+          <div style="display: flex; flex-direction: column; margin-bottom: 16px;">
+            <h2>Membres</h2>
+            <form action="/invite_user" method="POST" style="display: flex; align-items: center;">
+              <div>
+                <input list="pseudo-suggests" type="text" name="pseudo" id="input-pseudo" style="width: 86%;">
+                <input type="hidden" name="list-id" value=<?= $_GET["id"] ?>>
+                <datalist id="pseudo-suggests">
+                </datalist>
+              </div>
+              <button class="btn btn-outline-secondary" name="submit" type="submit">Inviter</button>
+            </form>
+
+          </div>
           <ul class="list-group list-group-flush">
             <?php
             foreach ($user_list as $user) {
@@ -194,6 +224,29 @@
         fetch(`/update_task?idTask=${idTask}&checked=${checked}`, {
           method: 'POST'
         }).then((res) => res.text()).then((data) => console.log(data))
+      }
+
+      window.onload = function() {
+        document.getElementById("input-pseudo").onkeyup = (e) => {
+          const currentPseudo = e.target.value;
+          if (currentPseudo.length > 0) {
+            $.ajax({
+              url: "/suggest",
+              data: {
+                q: currentPseudo
+              },
+              method: "GET",
+              dataType: "json",
+            }).done(res => {
+              $("#pseudo-suggests").empty(); // On vide l'ancienne liste de suggestions
+              for (let pseudo of res) {
+                let newOption = document.createElement("option");
+                newOption.textContent = pseudo;
+                $("#pseudo-suggests").append(newOption);
+              }
+            });
+          }
+        }
       }
     </script>
 </body>

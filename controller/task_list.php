@@ -41,6 +41,12 @@ $user_list = [];
 while ($row = $stmt->fetchObject(User::class)) {
   $user_list[] = $row;
 }
+$stmt = $pdo->prepare("SELECT * FROM Users");
+$stmt->execute();
+$all_users = [];
+while ($row = $stmt->fetchObject(User::class)) {
+  $all_users[] = $row;
+}
 
 $participation = null;
 
