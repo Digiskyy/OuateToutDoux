@@ -48,6 +48,15 @@ $router
     $auth->require_auth(); // Si l'utilisateur n'est pas connecté, il sera automatiquement redirigé vers /connexion
     require_once("controller/create_list.php");
   })
+  ->get("/suggest", function() {
+    require_once("controller/get_suggests.php");
+  })
+  ->get("/testing_invite", function() {
+    require_once("view/testing_invite.php");
+  }) 
+  ->post("/invite_user", function() {
+    require_once("controller/invite_user.php");
+  })
   ->post("/create_task", function() {
     require_once("controller/create_task.php");
   })

@@ -24,7 +24,7 @@ $idList = htmlspecialchars($_POST["id-list"]);
 
 $stmt = $pdo->prepare("SELECT * FROM Users NATURAL JOIN Participations WHERE idList=:idList AND Participations.idUser=:idUser");
 $stmt->execute(["idList" => $idList, "idUser" => $my_id]);
-if ($stmt->rowCount() <= 0) {
+if ($stmt->fetchColumn() <= 0) {
   // Ne participe pas a cette liste
   header("location: /dashboard");
 }
