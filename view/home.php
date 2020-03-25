@@ -10,7 +10,7 @@
 
   <!-- css -->
   <link rel="stylesheet" href="view/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+  <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="view/css/Header-Dark.compiled.css">
   <link rel="stylesheet" href="view/css/Login-Form-Clean.css" />
@@ -71,8 +71,9 @@
             <div class="form-group"><label>Date de fin*</label><input class="rouded-0 form-control" name="end-date" placeholder="<?php
                                                                                                                                   date_default_timezone_set('UTC');
                                                                                                                                   echo date("d/m/y"); ?>" style="background-color: #f8ca9c;margin-bottom: 10%;border-color: #908175;border-style: solid;border-width: 0.3vh;" /></div>
-            <div class="form-group" style="display:inline flex;"><button class="btn btn-primary btn-block" type="button" name="undo" style="background-color: #f6b99c;color:black;" onCLick="showPopupClass()">Annuler</button>
-              <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;margin-left:10%;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button></div>
+            <div class="form-group" style="display:inline block;">
+              <button class="btn btn-primary btn-block" type="submit" name="submit" style="background-color: #908175;border-style: solid;border-width: 0.4vh;border-color:#f6b99c;border-radius:7px;">Confirmer</button>
+            </div>
           </form>
         </div>
       </div>

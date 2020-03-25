@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="/view/css/home.css">
     <link rel="stylesheet" href="/view/css/accountInfo.css">
 
-
-
     <!-- js -->
     <script src="js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: myFont;
+    src:url("view/fonts/Roboto-Regular.ttf");
+}
+
+body {
+    font-family: myFont;
+}

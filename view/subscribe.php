@@ -10,8 +10,8 @@
 
   <!-- css -->
   <link rel="stylesheet" href="view/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700" />
   <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="view/css/Header-Dark.compiled.css" />
   <link rel="stylesheet" href="view/css/Registration-Form-with-Photo.compiled.css" />
   <link rel="stylesheet" href="view/css/subscribe.css">

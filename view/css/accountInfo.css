@@ -1,7 +1,4 @@
 @charset "utf-8";
-body {
-    font-family: Philosopher;
-}
 
 .info-form {
     display: flex;
