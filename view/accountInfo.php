@@ -2,29 +2,28 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OTD | Mes informations</title>
+    <link rel="icon" type="image/png" href="view/img/logo.png" />
 
-        <!-- css -->
-        <link rel="stylesheet" href="/view/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
-        <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/view/css/Header-Dark.compiled.css">
-        <link rel="stylesheet" href="/view/css/home.css">
-        <link rel="stylesheet" href="/view/css/accountInfo.css">
+    <!-- css -->
+    <link rel="stylesheet" href="/view/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/view/css/Header-Dark.compiled.css">
+    <link rel="stylesheet" href="/view/css/home.css">
+    <link rel="stylesheet" href="/view/css/accountInfo.css">
 
 
 
-        <!-- js -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-        <script src="js/jquery.min.js"></script>
-
-    <title>Personnal-Info</title>
+    <!-- js -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 
 <body style="background-color: #FDE6C5;">

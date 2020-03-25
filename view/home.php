@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Dashboard</title>
+  <title>OTD | Accueil</title>
+  <link rel="icon" type="image/png" href="view/img/logo.png" />
 
   <!-- css -->
   <link rel="stylesheet" href="view/css/bootstrap.min.css">
@@ -28,7 +29,8 @@
     <!-- header -->
     <div class="shadow-sm header-dark" style="height: 100px;">
       <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-        <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> 
+        <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav">
               <li class="nav-item" role="presentation"></li>
