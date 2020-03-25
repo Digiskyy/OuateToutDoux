@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .info-form {
     display: flex;
     flex-direction: column;
@@ -6,12 +8,17 @@
     align-self: center;
     align-content: center;
     padding: 2em;
-    font-family: 'Philosopher';
 }
 
 .form-info-line {
     padding: 0.7em;
     display: inline;
-    font-family: 'Philosopher';
     font-size: 1.3em;
+}
+
+.card {
+    border-style: solid;
+    border-radius: 0;
+    border-color: #f6b99c;
+    background-color: #f6b99c;
 }

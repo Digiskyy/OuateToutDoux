@@ -10,7 +10,6 @@
 
     <!-- css -->
     <link rel="stylesheet" href="/view/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/view/css/Header-Dark.compiled.css">
@@ -30,7 +29,7 @@
 
     <div>
         <!-- header -->
-        <div class="shadow-lg header-dark" style="height: 100px;">
+        <div class="shadow-sm header-dark" style="height: 100px;">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
                 <div class="container"><a href="/dashboard" style="width:60%;max-width:60%;margin-left:0;"> <img src="/view/img/logo.svg" style="width: 10%;max-width: 10%;"></a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -64,70 +63,81 @@
             require_once("controller/accountInfoController.php");
         ?>
 
-        <form method="post" action="/accountInfo" id="usr-info-form" class="info-form">
+        <main class="info-form">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                                <div class="card shadow-sm" style="background-color: #f6b99c;border-style: solid;border-radius: 0;border-color: #f6b99c;">
+                                    <div class="card-body">
+                                        <h2 class="text-center">Mon compte</h2>
+                                        <form method="post" action="/accountInfo" id="usr-info-form">
+                                            <div class="form-group row" style="margin-top:30px;">
+                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Nom :</label>
+                                                <div class="col-md-6" style="display: inline flex;">
+                                                    <input type="text" class="form-control" id="usr-last-name" style="width:330px;" name="name" value="<?php echo $lastName;   ?>" readOnly="true">
+                                                </div>
+                                                <a href="#">
+                                                    <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" style="margin-left:0;" width="30" height="30" onClick="modifyName()">
+                                                </a>
+                                            </div>
 
-            <h1>Mon compte</h1>
-            <div class="form-info-line">
-                <label>Nom : </label>
-                <input type="text" id="usr-last-name" name="name" value="<?php echo $lastName;   ?>" readOnly="true">
-                <a href="#">
-                    <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" width="30" height="30" onClick="modifyName()">
-                </a>
+                                            <div class="form-group row" style="margin-top:10px;">
+                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Prénom :</label>
+                                                <div class="col-md-6" style="display: inline flex;">
+                                                    <input type="text" class="form-control" id="usr-first-name" style="width:330px;" name="surname" value="<?php echo  $firstName; ?>" readOnly="true">
+                                                </div>
+                                                <a href="#">
+                                                    <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" style="margin-left:0;" width="30" height="30" onClick="modifyFirstName()">
+                                                </a>
+                                            </div>
+
+                                            <div class="form-group row" style="margin-top:10px;">
+                                                <label for="user_name" class="col-md-4 col-form-label text-md-right">Email :</label>
+                                                <div class="col-md-6" style="display: inline flex;">
+                                                    <input type="text" class="form-control" id="usr-e-mail"  style="width:330;" name="email" value="<?php echo $eMail;   ?>" readOnly="true">
+                                                </div>
+                                                <a href="#">
+                                                    <img alt="Modify last name on click" src="/view/img/pencil.png" id="img_name" style="margin-left:0;" width="30" height="30" onClick="modifyEmail()">
+                                                </a>
+                                            </div>
+
+                                            <div class="form-group row" style="margin-top:10px;">
+                                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Ancien mot de passe :</label>
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" style="width:330px;" name="old-usr-password">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row" style="margin-top:10px;">
+                                                <label for="present_address" class="col-md-4 col-form-label text-md-right">Nouveau mot de passe :</label>
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" style="width:330px;" name="new-usr-password">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row" style="margin-top:10px;">
+                                                <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Confirmation :</label>
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" style="width:330px;" name="new-usr-password-confirmation">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 offset-md-4" style="margin-top:15px;">
+                                                <button type="submit" class="btn btn-primary" style="background-color:#908175;border-color:#908175;">
+                                                    Envoyer
+                                                </button>
+                                                <button type="button" class="btn btn-primary" value="Supprimer compte" onClick="deleteAccount()" style="background-color:#908175;border-color:#908175;margin-left:30px;">
+                                                    Supprimer compte
+                                                </button>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-info-line">
-                <label>Prénom : </label>
-
-                <input type="text" id="usr-first-name" name="surname" value="<?php echo  $firstName; ?>" readOnly="true">
-                <a href="#">
-                    <img alt="Modify first name on click" id="img_first_name" src="/view/img/pencil.png" width="30" height="30" onClick="modifyFirstName()">
-                </a>
-            </div>
-
-
-            <div class="form-info-line">
-                <label>E-mail : </label>
-                <input type="text" id="usr-e-mail"  name="email" value="<?php echo $eMail;   ?>" readOnly="true">
-                <a href="#">
-                    <img alt="Modify e-mail on click" id="img_email" src="/view/img/pencil.png" width="30" height="30" onClick="modifyEmail()">
-                </a>
-            </div>
-
-            <div class="form-info-line">
-                <label>Ancien mot de passe : </label>
-                <input type="password" name="old-usr-password">
-            </div>
-            <?php
-                if(isset($error["oldPassword"]))
-                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["oldPassword"] . "<br/></div>");
-            ?>
-
-            <div class="form-info-line">
-                <label>Nouveau mot de passe : </label>
-                <input type="password" name="new-usr-password">
-            </div>
-            <?php
-                if(isset($error["newPasswordFormat"])) 
-                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordFormat"] . "<br/></div>");
-            ?>
-
-            <div class="form-info-line">
-                <label>Confirmation : </label>
-                <input type="password" name="new-usr-password-confirmation">
-            </div>
-            <?php
-                if(isset($error["passwordsNotFilled"])) 
-                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["passwordsNotFilled"] . "<br/></div>");
-                elseif(isset($error["newPasswordFormat"])) 
-                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordFormat"] . "<br/></div>");
-                elseif(isset($error["newPasswordConf"]))
-                    print('<div class="alert alert-danger" role="alert" style = "font-size: 0.85em;">' . $error["newPasswordConf"] . "<br/></div>");
-            ?>
-
-            <input type="submit" value="Modifier compte" name="submit">
-            <input type="button" value="Supprimer compte" onClick="deleteAccount()">
-
-        </form>
+        </main>
 
 
          <script language="JavaScript">
