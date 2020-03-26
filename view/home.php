@@ -107,7 +107,7 @@
                 hidePopupClass()
                 break
               default:
-                alert("Si t'enlèves le d de Gady ça fait gay")
+                alert("click error")
             }
           })
     </script>
